@@ -1,0 +1,144 @@
+.cabecalho {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid orange;
+    background: #CE9737;
+    background: -moz-linear-gradient(45deg, #CE9737 0%, #DC8A1E 50%, #D2C23A 100%);
+    color: white;
+}
+
+img {
+    width: 200px;
+    height: 150px;
+}
+
+.cabecalho, img {
+    border-radius: 20px;
+    margin: 5px;
+}
+
+h1 {
+    font-size: xx-large;
+    margin: 0 auto;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 30px;
+}
+
+h2 {
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    border-bottom: 2px solid orange ;
+    color: orange;
+}
+
+form{
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+    background-color: #CE9737;
+    border-radius: 10px;
+    padding: 10px;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+form, fieldset{
+    margin: 0 auto;
+    width: 70%;
+    border-color: #000000;
+}
+
+form fieldset div{
+    margin: 10px;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+}
+
+legend{
+    background-color: black;
+    color: #DC8A1E;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+label{
+    width: 80px;
+    color: black;
+    font-weight: bold;
+}
+
+input{
+    background-color: whitesmoke;
+    color: orange;
+    border-radius: 30px;
+    height: 30px;
+    text-align: center;
+}
+
+.linha1 input, .linha2 input{
+    font-style: italic;
+    width: 100%;
+}
+
+.linha3{
+    display: block;
+}
+
+.linha3 .button{
+    width: 100%;
+    height: auto;
+    background-color: black;
+    color: #DC8A1E;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 30px;
+}
+
+.linha3 p{
+    width: auto;
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: black;
+    border: none;
+    color: #DC8A1E;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+

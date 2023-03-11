@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://www.pa.senac.br/resources/site/favicon/favicon-16x16.png" sizes="16x16">
+    <link rel="stylesheet" href="calculadora.css">
+    <title>Calculadora</title>
+</head>
+<body>
+
+    <script>
+
+        var numero1 = ''
+        var numero2 = ''
+        var operacao = ''
+        var expressao = ''
+        var arrayExpressao = []
+        
+        function enviaCaracter(caracter){
+            arrayExpressao.push(caracter)
+            escreveVisor(caracter)
+            expressao = expressao + caracter
+        }
+
+        function enviaOperacao(op){
+            arrayExpressao.push(op)
+            operacao = op
+            escreveVisor(op)
+        }
+
+        function corrigir(){
+            let texto = ''
+            arrayExpressao.pop()
+            for (let x in arrayExpressao){
+                texto += arrayExpressao[x]
+            }
+            expressao = texto
+            document.getElementById('visor').value = texto
+            
+            console.log('Expressao: ', expressao, ' - arrayExpressao: ', arrayExpressao, 'numero1: ', numero1, 'operacao: ', operacao ,'numero2: ', numero2)
+            console.log(texto)
+        }
+
+        function guardaNumero(){
+            if(numero1 == ''){
+                numero1 = expressao
+            }else if(numero2 == ''){
+                numero2 = expressao
+            }
+            expressao = ''
+        }
+
+        function escreveVisor(caracter){
+            document.getElementById('visor').value = document.getElementById('visor').value + caracter
+        }
+
+        function calcularExpresao(){
+            switch (operacao){
+                case '+':
+                    let soma = parseFloat(numero1) + parseFloat(numero2)
+                    document.getElementById('resultado').value = soma
+                    break
+                case '-':
+                    let diferenca = parseFloat(numero1) - parseFloat(numero2)
+                    document.getElementById('resultado').value = diferenca
+                    break
+                case 'x':
+                    let multiplicacao = parseFloat(numero1) * parseFloat(numero2)
+                    document.getElementById('resultado').value = multiplicacao
+                    break
+                case '/':
+                    let divisao = parseFloat(numero1) / parseFloat(numero2)
+                    document.getElementById('resultado').value = divisao
+                    break
+                default:
+                document.getElementById('resultado').value = 'erro'
+            }
+            document.getElementById('visor').value = ''
+            numero1 = ''
+            numero2 = ''
+            operacao = ''
+            expressao = ''
+            arrayExpressao = []
+        }
+
+        function limparVisor(){
+            document.getElementById('visor').value = ''
+            document.getElementById('resultado').value = ''
+            numero1 = ''
+            numero2 = ''
+            operacao = ''
+            expressao = ''
+            arrayExpressao = []
+        }
+
+    </script>
+
+    <div class="cabecalho">
+        <img src="imagens/senac-mini.jpg" alt="Senac logo">
+        <h1>Atividade Desenv. Web: Calculadora.</h1>
+    </div>
+
+    <h2>Calculadora</h2>
+
+    <form>
+        
+        <fieldset>
+            <legend>Visor</legend>
+
+            <div class="coluna1">
+
+                <div class="visor">
+                    <input type="text" name="visor" id="visor" disabled title="Visor">
+                </div>
+                <div class="resultado">
+                    <input type="text" name="resultado" id="resultado" disabled title="Resultado">
+                </div>
+
+                <div class="teclasNumericas">
+                    <div class="teclas1-3">
+                        <input type="button" value="1" id="tecla1" onclick="enviaCaracter('1')">
+                        <input type="button" value="2" id="tecla2" onclick="enviaCaracter('2')">
+                        <input type="button" value="3" id="tecla3" onclick="enviaCaracter('3')">
+                    </div>
+        
+                    <div class="teclas4-6">
+                        <input type="button" value="4" id="tecla4" onclick="enviaCaracter('4')">
+                        <input type="button" value="5" id="tecla5" onclick="enviaCaracter('5')">
+                        <input type="button" value="6" id="tecla6" onclick="enviaCaracter('6')">
+                    </div>
+        
+                    <div class="teclas7-9">
+                        <input type="button" value="7" id="tecla7" onclick="enviaCaracter('7')">
+                        <input type="button" value="8" id="tecla8" onclick="enviaCaracter('8')">
+                        <input type="button" value="9" id="tecla9" onclick="enviaCaracter('9')">
+                    </div>
+        
+                    <div class="teclas0-0"></div>
+                        <input type="button" value="." id="tecla." onclick="enviaCaracter('.')">
+                        <input type="button" value="0" id="tecla0" onclick="enviaCaracter('0')">
+                        <input type="button" value="<<" id="tecla<<" onClick="corrigir()" title="Corrigir">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="coluna2">
+                <div class="teclasOperadores">
+                    <input type="button" value="C" onClick="limparVisor()" title="Limpar">
+                    <input type="button" value="+" id="tecla+" onclick="enviaOperacao('+'), guardaNumero()" title="Somar">
+                    <input type="button" value="-" id="tecla-" onclick="enviaOperacao('-'), guardaNumero()" title="Diminuir">
+                    <input type="button" value="x" id="teclaX" onclick="enviaOperacao('x'), guardaNumero()" title="Multiplicar">
+                    <input type="button" value="/" id="tecla/" onclick="enviaOperacao('/'), guardaNumero()" title="Dividir">
+                    <input type="button" value="=" id="tecla=" onClick="guardaNumero(), calcularExpresao()" title="Calcular">
+                </div>
+            </div>
+
+        </fieldset>
+
+    </form>
+    
+</body>
+</html>
